@@ -1,0 +1,38 @@
+# Claude Code Settings
+
+## Model Preferences
+preferred_model: claude-sonnet-4-20250514
+fallback_model: claude-haiku-35-20241022
+
+## Context
+max_context_files: 20
+auto_context: true
+
+## Permissions
+allow_file_creation: true
+allow_file_deletion: false
+allow_shell_commands: true
+allow_web_requests: false
+
+## Auto-approval patterns
+auto_approve_commands:
+  - "npm run"
+  - "npx"
+  - "node"
+  - "tsc"
+  - "jest"
+  - "vitest"
+  - "cat"
+  - "ls"
+  - "find"
+  - "grep"
+  - "head"
+  - "tail"
+  - "wc"
+
+## Workspace
+workspace_root: /srv/www/saas-project
+packages:
+  - packages/api
+  - packages/admin
+  - packages/shared
