@@ -8,6 +8,9 @@ import { DashboardPage } from '@/features/dashboard/pages/dashboard.page';
 import { UsersListPage } from '@/features/users/pages/users-list.page';
 import { UserEditPage } from '@/features/users/pages/user-edit.page';
 import { ProfilePage } from '@/features/profile/pages/profile.page';
+import { SettingsPage } from '@/features/settings/pages/settings.page';
+import { AuditLogsPage } from '@/features/audit-logs/pages/audit-logs.page';
+import { NotificationsPage } from '@/features/notifications/pages/notifications.page';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,6 +33,9 @@ export function App() {
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/users" element={<UsersListPage />} />
             <Route path="/users/:id" element={<UserEditPage />} />
+            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/audit-logs" element={<AuditLogsPage />} />
+            <Route path="/notifications" element={<NotificationsPage />} />
             <Route path="/profile" element={<ProfilePage />} />
           </Route>
           <Route path="*" element={<Navigate to="/dashboard" replace />} />

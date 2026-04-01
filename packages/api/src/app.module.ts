@@ -10,6 +10,9 @@ import { HttpExceptionFilter } from './common/filters';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { SettingsModule } from './modules/settings/settings.module';
+import { AuditLogsModule } from './modules/audit-logs/audit-logs.module';
+import { NotificationsModule } from './modules/notifications/notifications.module';
 
 @Module({
   imports: [
@@ -45,6 +48,9 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
     AuthModule,
     UsersModule,
     DashboardModule,
+    SettingsModule,
+    AuditLogsModule,
+    NotificationsModule,
   ],
   providers: [
     { provide: APP_GUARD, useClass: JwtAuthGuard },

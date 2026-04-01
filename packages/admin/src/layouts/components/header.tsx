@@ -1,4 +1,4 @@
-import { Menu, LogOut, Bell } from 'lucide-react';
+import { Menu, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -9,6 +9,7 @@ import {
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { useAuthStore } from '@/stores/auth.store';
 import { useNavigate } from 'react-router';
+import { NotificationBell } from '@/features/notifications/components/notification-bell';
 
 interface HeaderProps {
   onToggleSidebar: () => void;
@@ -39,9 +40,7 @@ export function Header({ onToggleSidebar }: HeaderProps) {
       <div className="flex-1" />
 
       <div className="flex items-center gap-2">
-        <Button variant="ghost" size="icon">
-          <Bell className="h-5 w-5" />
-        </Button>
+        <NotificationBell />
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

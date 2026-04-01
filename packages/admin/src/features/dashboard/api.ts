@@ -7,6 +7,18 @@ export interface DashboardStats {
   newUsersThisMonth: number;
 }
 
+export interface RecentActivity {
+  id: string;
+  userId: string | null;
+  action: string;
+  entityType: string;
+  entityId: string;
+  createdAt: string;
+}
+
 export const dashboardApi = {
   getStats: () => api.get<ApiResponse<DashboardStats>>('/dashboard/stats'),
+
+  getRecentActivity: () =>
+    api.get<ApiResponse<RecentActivity[]>>('/dashboard/recent-activity'),
 };
