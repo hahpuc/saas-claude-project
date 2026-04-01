@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { useAuthStore } from '@/stores/auth.store';
 import { loginSchema, type LoginFormValues } from '../schemas/login.schema';
 import { AxiosError } from 'axios';
+import { LogIn } from 'lucide-react';
 
 export function LoginPage() {
   const navigate = useNavigate();
@@ -35,19 +36,22 @@ export function LoginPage() {
   };
 
   return (
-    <Card>
-      <CardHeader className="text-center">
-        <CardTitle className="text-2xl">SaaS Admin</CardTitle>
-        <CardDescription>Sign in to your account</CardDescription>
+    <Card className="shadow-xl border-0 ring-1 ring-border/50">
+      <CardHeader className="text-center pb-2">
+        <CardTitle className="text-2xl font-bold">Welcome back</CardTitle>
+        <CardDescription className="text-muted-foreground">
+          Sign in to your admin account
+        </CardDescription>
       </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <CardContent className="pt-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email" className="text-sm font-medium">Email</Label>
             <Input
               id="email"
               type="email"
               placeholder="admin@saasproject.com"
+              className="h-11"
               {...register('email')}
             />
             {errors.email && (
@@ -55,19 +59,30 @@ export function LoginPage() {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password" className="text-sm font-medium">Password</Label>
             <Input
               id="password"
               type="password"
               placeholder="••••••••"
+              className="h-11"
               {...register('password')}
             />
             {errors.password && (
               <p className="text-sm text-destructive">{errors.password.message}</p>
             )}
           </div>
-          <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? 'Signing in...' : 'Sign in'}
+          <Button type="submit" className="w-full h-11 text-sm font-semibold" disabled={isLoading}>
+            {isLoading ? (
+              <span className="flex items-center gap-2">
+                <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                Signing in...
+              </span>
+            ) : (
+              <span className="flex items-center gap-2">
+                <LogIn className="h-4 w-4" />
+                Sign in
+              </span>
+            )}
           </Button>
         </form>
       </CardContent>

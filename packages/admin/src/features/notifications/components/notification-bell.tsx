@@ -23,23 +23,23 @@ export function NotificationBell() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="relative">
-          <Bell className="h-5 w-5" />
+        <Button variant="ghost" size="icon" className="relative h-9 w-9 rounded-full">
+          <Bell className="h-[18px] w-[18px]" />
           {!!unreadCount && unreadCount > 0 && (
-            <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-destructive px-1 text-[10px] font-medium text-destructive-foreground">
+            <span className="absolute -right-0.5 -top-0.5 flex h-4.5 min-w-4.5 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-primary-foreground animate-in zoom-in-50 duration-200">
               {unreadCount > 99 ? '99+' : unreadCount}
             </span>
           )}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-80">
-        <div className="flex items-center justify-between px-3 py-2">
-          <span className="text-sm font-medium">Notifications</span>
+        <div className="flex items-center justify-between px-3 py-2.5">
+          <span className="text-sm font-semibold">Notifications</span>
           {!!unreadCount && unreadCount > 0 && (
             <Button
               variant="ghost"
               size="sm"
-              className="h-auto px-1 py-0.5 text-xs"
+              className="h-auto px-2 py-1 text-xs text-primary hover:text-primary"
               onClick={() => markAllAsRead.mutate()}
             >
               <Check className="mr-1 h-3 w-3" /> Mark all read
@@ -48,23 +48,24 @@ export function NotificationBell() {
         </div>
         <DropdownMenuSeparator />
         {notifications.length === 0 ? (
-          <div className="px-3 py-6 text-center text-sm text-muted-foreground">
-            No new notifications
+          <div className="flex flex-col items-center px-3 py-8 text-center">
+            <Bell className="h-8 w-8 text-muted-foreground/30 mb-2" />
+            <span className="text-sm text-muted-foreground">No new notifications</span>
           </div>
         ) : (
           notifications.map((notification) => (
             <DropdownMenuItem
               key={notification.id}
-              className="flex cursor-pointer flex-col items-start gap-1 px-3 py-2"
+              className="flex cursor-pointer flex-col items-start gap-1.5 px-3 py-2.5"
               onClick={() => markAsRead.mutate(notification.id)}
             >
               <span className="text-sm font-medium">{notification.title}</span>
               {notification.content && (
-                <span className="text-xs text-muted-foreground line-clamp-2">
+                <span className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
                   {notification.content}
                 </span>
               )}
-              <span className="text-xs text-muted-foreground">
+              <span className="text-[11px] text-muted-foreground/70">
                 {formatDistanceToNow(new Date(notification.createdAt), { addSuffix: true })}
               </span>
             </DropdownMenuItem>
@@ -72,10 +73,10 @@ export function NotificationBell() {
         )}
         <DropdownMenuSeparator />
         <DropdownMenuItem
-          className="justify-center text-sm"
+          className="justify-center py-2.5 text-sm font-medium text-primary hover:text-primary"
           onClick={() => navigate('/notifications')}
         >
-          View all <ExternalLink className="ml-1 h-3 w-3" />
+          View all notifications <ExternalLink className="ml-1.5 h-3 w-3" />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

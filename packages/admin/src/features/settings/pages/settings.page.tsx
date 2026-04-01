@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Plus, Pencil, Trash } from 'lucide-react';
+import { Plus, Pencil, Trash, Settings as SettingsIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Textarea } from '@/components/ui/textarea';
+import { Card } from '@/components/ui/card';
 import {
   Table,
   TableBody,
@@ -90,22 +91,27 @@ export function SettingsPage() {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Settings</h1>
-        <Button onClick={openCreate}>
-          <Plus className="mr-2 h-4 w-4" /> Add Setting
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight">Settings</h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Manage system-wide configuration and preferences.
+          </p>
+        </div>
+        <Button onClick={openCreate} className="gap-2">
+          <Plus className="h-4 w-4" /> Add Setting
         </Button>
       </div>
 
-      <div className="rounded-md border">
+      <Card className="shadow-sm overflow-hidden">
         <Table>
           <TableHeader>
-            <TableRow>
-              <TableHead>Key</TableHead>
-              <TableHead>Value</TableHead>
-              <TableHead>Description</TableHead>
-              <TableHead>Updated</TableHead>
+            <TableRow className="bg-muted/30 hover:bg-muted/30">
+              <TableHead className="font-semibold">Key</TableHead>
+              <TableHead className="font-semibold">Value</TableHead>
+              <TableHead className="font-semibold">Description</TableHead>
+              <TableHead className="font-semibold">Updated</TableHead>
               <TableHead className="w-[100px]" />
             </TableRow>
           </TableHeader>
@@ -120,13 +126,14 @@ export function SettingsPage() {
               ))
             ) : !settings?.length ? (
               <TableRow>
-                <TableCell colSpan={5} className="py-8 text-center text-muted-foreground">
-                  No settings configured yet
+                <TableCell colSpan={5} className="py-12 text-center">
+                  <SettingsIcon className="mx-auto h-10 w-10 text-muted-foreground/30 mb-3" />
+                  <p className="text-muted-foreground">No settings configured yet</p>
                 </TableCell>
               </TableRow>
             ) : (
               settings.map((setting) => (
-                <TableRow key={setting.id}>
+                <TableRow key={setting.id} className="hover:bg-muted/30">
                   <TableCell className="font-mono text-sm font-medium">{setting.key}</TableCell>
                   <TableCell className="max-w-[300px]">
                     <pre className="truncate text-xs text-muted-foreground">
@@ -141,10 +148,10 @@ export function SettingsPage() {
                   </TableCell>
                   <TableCell>
                     <div className="flex gap-1">
-                      <Button variant="ghost" size="icon" onClick={() => openEdit(setting)}>
+                      <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => openEdit(setting)}>
                         <Pencil className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="icon" onClick={() => setDeleteKey(setting.key)}>
+                      <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setDeleteKey(setting.key)}>
                         <Trash className="h-4 w-4 text-destructive" />
                       </Button>
                     </div>
@@ -154,7 +161,7 @@ export function SettingsPage() {
             )}
           </TableBody>
         </Table>
-      </div>
+      </Card>
 
       {/* Edit / Create Dialog */}
       <Dialog open={editOpen} onOpenChange={setEditOpen}>
@@ -170,6 +177,7 @@ export function SettingsPage() {
                 onChange={(e) => setEditKey(e.target.value)}
                 placeholder="e.g. site.name"
                 disabled={!isNew}
+                className="h-10"
               />
             </div>
             <div className="space-y-2">
@@ -188,6 +196,7 @@ export function SettingsPage() {
                 value={editDescription}
                 onChange={(e) => setEditDescription(e.target.value)}
                 placeholder="What this setting does"
+                className="h-10"
               />
             </div>
           </div>
