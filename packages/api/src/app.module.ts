@@ -13,6 +13,9 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { SettingsModule } from './modules/settings/settings.module';
 import { AuditLogsModule } from './modules/audit-logs/audit-logs.module';
 import { NotificationsModule } from './modules/notifications/notifications.module';
+import { UploadsModule } from './modules/uploads/uploads.module';
+import { EmailModule } from './modules/email/email.module';
+import { RolesModule } from './modules/roles/roles.module';
 
 @Module({
   imports: [
@@ -51,6 +54,9 @@ import { NotificationsModule } from './modules/notifications/notifications.modul
     SettingsModule,
     AuditLogsModule,
     NotificationsModule,
+    UploadsModule,
+    EmailModule,
+    RolesModule,
   ],
   providers: [
     { provide: APP_GUARD, useClass: JwtAuthGuard },

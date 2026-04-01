@@ -11,6 +11,7 @@ import { ProfilePage } from '@/features/profile/pages/profile.page';
 import { SettingsPage } from '@/features/settings/pages/settings.page';
 import { AuditLogsPage } from '@/features/audit-logs/pages/audit-logs.page';
 import { NotificationsPage } from '@/features/notifications/pages/notifications.page';
+import { RolesPage } from '@/features/roles/pages/roles.page';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -34,6 +35,7 @@ export function App() {
             <Route path="/users" element={<UsersListPage />} />
             <Route path="/users/:id" element={<UserEditPage />} />
             <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/roles" element={<RolesPage />} />
             <Route path="/audit-logs" element={<AuditLogsPage />} />
             <Route path="/notifications" element={<NotificationsPage />} />
             <Route path="/profile" element={<ProfilePage />} />

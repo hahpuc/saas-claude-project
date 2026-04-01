@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router';
-import { LayoutDashboard, Users, User, Settings, FileText, X } from 'lucide-react';
+import { LayoutDashboard, Users, User, Settings, FileText, Shield, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const navItems = [
   { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { to: '/users', icon: Users, label: 'Users' },
+  { to: '/roles', icon: Shield, label: 'Roles' },
   { to: '/settings', icon: Settings, label: 'Settings' },
   { to: '/audit-logs', icon: FileText, label: 'Audit Logs' },
   { to: '/profile', icon: User, label: 'Profile' },

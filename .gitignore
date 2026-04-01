@@ -8,7 +8,7 @@ build/
 npm-debug.log*
 coverage/
 .nyc_output/
-uploads/
+/uploads/
 *.tgz
 .DS_Store
 Thumbs.db

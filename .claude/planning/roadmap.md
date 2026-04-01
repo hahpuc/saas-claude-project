@@ -14,12 +14,12 @@
 - [x] Admin dashboard skeleton (layout, sidebar, header, stats cards)
 - [x] Docker Compose for local development (PostgreSQL + Redis)
 
-## Phase 2: Core Features (Week 3-4)
+## Phase 2: Core Features (Week 3-4) ✅
 - [x] User management admin pages (list, create, edit, delete)
-- [ ] Role & permission management
+- [x] Role & permission management (granular permissions per role + admin page)
 - [x] System settings module (API + admin page)
-- [ ] File upload service (S3/local)
-- [ ] Email service (SMTP/SendGrid)
+- [x] File upload service (local storage with validation)
+- [x] Email service (SMTP via Nodemailer + templates)
 - [x] Audit log module (API + admin page with filters)
 - [x] Notification system (API + bell dropdown + full page)
 - [x] Dashboard overview with statistics + recent activity
